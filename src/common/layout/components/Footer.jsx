@@ -1,4 +1,4 @@
-import { Box, TableFooter, Typography } from "@mui/material";
+import { Box,  Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailIcon from "@mui/icons-material/Mail";
