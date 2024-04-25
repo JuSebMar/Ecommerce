@@ -1,4 +1,4 @@
-import { Box,  Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailIcon from "@mui/icons-material/Mail";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Footer = () => {
   const emailTo = "juansebastiansotomartin@gmail.com";
   return (
-    <Footer
+    <footer
       style={{
         display: "flex",
         width: "100%",
@@ -38,6 +38,6 @@ export const Footer = () => {
         </a>
       </Box>
       <Typography> &copy; Mi Portafolio en linea</Typography>
-    </Footer>
+    </footer>
   );
 };
