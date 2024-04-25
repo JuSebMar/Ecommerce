@@ -1,5 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useProductContext } from "../context/ProductsContext";
+import { useProductContext } from "../common/context/ProductsContext";
+import { useCartContext } from "../common/context/CartContext";
+
 import { useEffect } from "react";
 import { Card, CardMedia, Typography, CardContent, Box } from "@mui/material";
 
@@ -8,7 +10,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import { CustomButton } from "../components/CustomButton";
-import { useCartContext } from "../context/CartContext";
 
 export const OneItemPage = (id) => {
   const { addToCart } = useCartContext(id);

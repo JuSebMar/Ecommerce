@@ -4,7 +4,7 @@ import Accordion from "@mui/material/Accordion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Box, IconButton, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
-import { getAllCategory } from "../../services/categoriesService";
+import { getAllCategory } from "../../common/services/categoriesService";
 import { Link } from "react-router-dom";
 // import getProductCategories from "../services/CategoriesServices";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";

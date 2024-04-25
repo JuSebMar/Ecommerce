@@ -1,6 +1,6 @@
 import { AuthProvider } from "./auth/authContext";
-import { CartProvider } from "./context/CartContext";
-import { ProductProvider } from "./context/ProductsContext";
+import { CartProvider } from "./common/context/CartContext";
+import { ProductProvider } from "./common/context/ProductsContext";
 import { AppRouter } from "./router/AppRouter";
 
 const App = () => {

@@ -23,13 +23,13 @@ export const Navbar = () => {
       style={{
         backgroundColor: "#1B1C1A",
         display: "flex",
-        padding: "40px 40px",
+        padding: "20px 20px",
         justifyContent: "space-between",
         alignItems: "center",
         position: "fixed",
         width: "100vw",
+        zIndex:9999,
         top: 0,
-        zIndex: 9999,
       }}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Link className="navbar-brand" to="/">

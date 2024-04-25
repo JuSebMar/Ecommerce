@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useProductContext } from "../context/ProductsContext";
+import { useProductContext } from "../common/context/ProductsContext";
 import { ProductCard } from "./ProductCard";
 
 export const ProductCategories = () => {

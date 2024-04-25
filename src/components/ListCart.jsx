@@ -11,10 +11,10 @@ import {
   Box,
 } from "@mui/material";
 
-import { getLocalStorage, removeLocalStorage } from "../functions/localStorage";
-import { useProductContext } from "../context/ProductsContext";
+import { getLocalStorage, removeLocalStorage } from "../common/functions/localStorage";
+import { useProductContext } from "../common/context/ProductsContext";
 import { CustomButton } from "./CustomButton";
-import { useCartContext } from "../context/CartContext";
+import { useCartContext } from "../common/context/CartContext";
 
 export const ListCart = () => {
   const [products, setProducts] = useState([]);

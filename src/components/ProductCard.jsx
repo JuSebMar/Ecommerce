@@ -5,8 +5,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
-import { useFavorites } from "../hooks/useFavorites";
-import { useCartContext } from "../context/CartContext";
+import { useFavorites } from "../common/hooks/useFavorites";
+import { useCartContext } from "../common/context/CartContext";
 // import Message from "../helpers/Message";
 
 import { IconShoppingCartPlus } from "@tabler/icons-react";
