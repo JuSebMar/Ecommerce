@@ -12,9 +12,7 @@ export const useFavorites = () => {
       localStorage.setItem("favorites", JSON.stringify(updateNew));
     }
   };
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
+  useEffect(() => {}, [favorites]);
 
   return { handleFavorites };
 };

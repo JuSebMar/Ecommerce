@@ -11,7 +11,10 @@ import {
   Box,
 } from "@mui/material";
 
-import { getLocalStorage, removeLocalStorage } from "../common/functions/localStorage";
+import {
+  getLocalStorage,
+  removeLocalStorage,
+} from "../common/functions/localStorage";
 import { useProductContext } from "../common/context/ProductsContext";
 import { CustomButton } from "./CustomButton";
 import { useCartContext } from "../common/context/CartContext";
@@ -71,22 +74,25 @@ export const ListCart = () => {
   }, [refresh]);
 
   return (
-    <>
-      <Box sx={{ height: "60vh", marginTop: "200px" }}>
-        <Paper
-          elevation={3}
-          style={{ padding: "20px", maxWidth: "700px", margin: "20px auto" }}>
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography variant="h5" gutterBottom>
-              Lista de Productos
-            </Typography>
-            <CustomButton onClick={cleanCart} text={"Limpiar Carrito"} />
-          </Box>
+    <Box sx={{ height: "100vh", marginTop: "120px" }}>
+      <Paper
+        style={{ padding: "20px", maxWidth: "700px", margin: "20px auto" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography variant="h5" gutterBottom>
+            Lista de Productos
+          </Typography>
+          <CustomButton onClick={cleanCart} text={"Limpiar Carrito"} />
+        </Box>
 
-          {products.length > 0 &&
-            products.map((product, index) => (
-              <Box key={index}>
-                <ListItem>
+        {products.length > 0 &&
+          products.map((product, index) => (
+            <Box>
+              <ListItem
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}>
+                <Box sx={{ display: "flex", gap: "20px" }}>
                   <CardMedia
                     component={"img"}
                     image={product.image}
@@ -94,35 +100,45 @@ export const ListCart = () => {
                     sx={{ width: "60px", marginRight: "20px" }}
                   />
 
-                  <ListItemText secondary={` ${product.title}`} />
                   <ListItemText
-                    secondary={
-                      product.quantity && `Cantidad: ${product?.quantity}`
-                    }
+                    secondary={` ${product.title}`}
+                    sx={{ maxWidth: "200px", width: "200px" }}
                   />
+                  <Box>
+                    <ListItemText
+                      secondary={
+                        product.quantity && `Cantidad: ${product?.quantity}`
+                      }
+                    />
+                    <ListItemText secondary={`Precio: ${product.price}`} />
+                  </Box>
+                </Box>
 
-                  <ListItemText secondary={`Precio: ${product.price}`} />
+                <Box sx={{ display: "flex", padding: "20px" }}>
                   <button
+                    className="btn btn-danger"
                     style={{ width: "50px" }}
                     onClick={() => handlerAddToCart(+product.id)}>
                     +
                   </button>
                   <button
+                    className="btn btn-danger"
                     style={{ width: "50px" }}
                     onClick={() => handlerLeesToCart(+product.id)}>
                     -
                   </button>
                   <button
+                    className="btn btn-danger"
                     style={{ width: "50px" }}
                     onClick={() => removeItemCart(product.id)}>
                     *
                   </button>
-                </ListItem>
-                <Divider />
-              </Box>
-            ))}
-        </Paper>
-      </Box>
-    </>
+                </Box>
+              </ListItem>
+              <Divider />
+            </Box>
+          ))}
+      </Paper>
+    </Box>
   );
 };

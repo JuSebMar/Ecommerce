@@ -11,7 +11,7 @@ export const Footer = () => {
       style={{
         display: "flex",
         width: "100%",
-        backgroundColor: "black",
+        backgroundColor: "#1B1C1A",
         color: "white",
         flexDirection: "column",
         justifyContent: "center",
@@ -20,21 +20,22 @@ export const Footer = () => {
         gap: "10px",
       }}>
       <Box
+        id="contacto"
         sx={{
           display: "flex",
           gap: "20px",
           alignItems: "center",
         }}>
         <Link to={`https://github.com/JuSebMar/`}>
-          <GitHubIcon sx={{ fontSize: "45px", color: "white" }} />
+          <GitHubIcon sx={{ fontSize: "35px", color: "white" }} />
         </Link>
 
         <Link
           to={`https://www.linkedin.com/in/sebastian-soto-987b89208?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BU3%2F7xEftRDSQ1miiycuY%2Bw%3D%3D`}>
-          <LinkedInIcon sx={{ fontSize: "50px", color: "white" }} />
+          <LinkedInIcon sx={{ fontSize: "40px", color: "white" }} />
         </Link>
         <a href={`mailto:${emailTo}`}>
-          <MailIcon sx={{ fontSize: "55px", color: "white" }} />
+          <MailIcon sx={{ fontSize: "45px", color: "white" }} />
         </a>
       </Box>
       <Typography> &copy; Mi Portafolio en linea</Typography>

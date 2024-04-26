@@ -1,8 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../../../auth/authContext";
 import LogOut from "../../../auth/components/LogOut";
+import { CustomCategoriesList } from "../../components/CustomCategoriesList";
 import CustomizedBadges from "../../components/CartIcon";
 import BadgeAvatars from "../../components/UserIcon";
+import logo from "../../assets/eComerce.png";
+// componentes de Material UI
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Accordion,
   AccordionDetails,
@@ -11,51 +16,47 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import { CustomCategoriesList } from "../../components/CustomCategoriesList";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { SmoothScroll } from "../../utils/SmoothScroll";
 
 export const Navbar = () => {
-  const { user, setUser } = useAuth();
+  const { user } = useAuth();
 
   return (
     <nav
       style={{
-        backgroundColor: "#1B1C1A",
         display: "flex",
-        padding: "20px 20px",
-        justifyContent: "space-between",
-        alignItems: "center",
         position: "fixed",
-        width: "100vw",
-        zIndex:9999,
+        width: "100%",
+        zIndex: 9999,
         top: 0,
+        justifyContent: "space-between",
+        backgroundColor: "#1B1C1A",
       }}>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Link className="navbar-brand" to="/">
-          <Typography sx={{ fontSize: 30, color: "#ffffff" }}>
-            E-Comerce
-          </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          padding: "10px 15px",
+        }}>
+        <Link
+          className="navbar-brand"
+          to="/"
+          style={{ textDecoration: "none" }}>
+          <img
+            src={logo}
+            style={{
+              backgroundColor: "white",
+              borderRadius: "10px",
+              padding: "3px",
+            }}
+          />
         </Link>
         <CustomCategoriesList />
-        <NavLink
-          className={({ isActive }) =>
-            `nav-item nav-link  ${isActive ? "active" : ""}`
-          }
-          to="/quien">
-          <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
-            Quienes somos
-          </Typography>
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            `nav-item nav-link  ${isActive ? "active" : ""}`
-          }
-          to="/quien">
+        <SmoothScroll to="#contacto">
           <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
             Contacto
           </Typography>
-        </NavLink>
+        </SmoothScroll>
       </Box>
 
       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -112,12 +113,13 @@ export const Navbar = () => {
             </Accordion>
           </Box>
         ) : (
-          <>
+          <Box sx={{ display: "flex", gap: "10px", marginRight: "15px" }}>
             <NavLink
               className={({ isActive }) =>
                 `nav-item nav-link  ${isActive ? "active" : ""}`
               }
-              to="/newuser">
+              to="/newuser"
+              style={{ textDecoration: "none" }}>
               <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
                 Registro
               </Typography>
@@ -126,12 +128,13 @@ export const Navbar = () => {
               className={({ isActive }) =>
                 `nav-item nav-link  ${isActive ? "active" : ""}`
               }
-              to="/login">
+              to="/login"
+              style={{ textDecoration: "none" }}>
               <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
                 Login
               </Typography>
             </NavLink>
-          </>
+          </Box>
         )}
       </Box>
     </nav>

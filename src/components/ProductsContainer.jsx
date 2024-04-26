@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useProductContext } from "../common/context/ProductsContext";
 import { ProductCard } from "./ProductCard";
+import { Box } from "@mui/material";
 
 export const ProductsContainer = () => {
   const { products, getAllProducts } = useProductContext();
@@ -13,15 +14,15 @@ export const ProductsContainer = () => {
   }, []);
 
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: "flex",
         width: "100%",
         flexWrap: "wrap",
-        gap: "37px",
-        margin: "200px 0 90px 0",
+        gap: "20px",
+        margin: "100px 0 90px 0",
         justifyContent: "center",
-        padding: "50px",
+        padding: "20px",
       }}>
       {products.length > 0 &&
         products.map((product) => (
@@ -34,6 +35,6 @@ export const ProductsContainer = () => {
             id={product.id}
           />
         ))}
-    </div>
+    </Box>
   );
 };

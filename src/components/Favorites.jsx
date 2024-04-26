@@ -25,7 +25,7 @@ export const Favorites = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        marginTop: "300px",
+        marginTop: "120px",
         gap: "10px",
       }}>
       <Typography variant="h3">Mis Favoritos</Typography>

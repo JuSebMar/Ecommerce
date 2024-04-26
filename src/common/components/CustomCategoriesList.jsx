@@ -2,7 +2,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Accordion from "@mui/material/Accordion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllCategory } from "../../common/services/categoriesService";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export const CustomCategoriesList = () => {
+  const theme = useTheme();
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +54,7 @@ export const CustomCategoriesList = () => {
               style={{ textDecoration: "none" }}>
               <AccordionDetails
                 sx={{
+                  fontFamily: theme.typography.fontFamily,
                   fontSize: 20,
                   textDecoration: "none",
                   backgroundColor: "#1B1C1A",

@@ -1,15 +1,14 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useFavorites } from "../common/hooks/useFavorites";
+import { useCartContext } from "../common/context/CartContext";
 
+// Componentesn de Material UI
+import { IconShoppingCartPlus } from "@tabler/icons-react";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
-import { useFavorites } from "../common/hooks/useFavorites";
-import { useCartContext } from "../common/context/CartContext";
-// import Message from "../helpers/Message";
-
-import { IconShoppingCartPlus } from "@tabler/icons-react";
 
 export const ProductCard = ({ id, image, title, price }) => {
   const { addToCart } = useCartContext(id);
@@ -20,7 +19,7 @@ export const ProductCard = ({ id, image, title, price }) => {
   };
 
   return (
-    <Box display={{ display: "flex" }}>
+    <Box sx={{ display: "flex", maxHeight: "355px" }}>
       <Card
         sx={{
           width: "280px",
@@ -28,11 +27,12 @@ export const ProductCard = ({ id, image, title, price }) => {
           position: "relative",
           flexDirection: "column",
           paddingBottom: "40px",
+          borderRadius: "10px",
           boxShadow:
             "rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px",
         }}>
-        <Link to={`cart/${id}`}>
-          <Box sx={{ alignSelf: "center", height: "200px" }}>
+        <Box sx={{ alignSelf: "center", height: "200px", padding: "30px" }}>
+          <Link to={`cart/${id}`}>
             {image && (
               <CardMedia
                 sx={{ Width: "100%", height: "100%", objectFit: "contain" }}
@@ -41,32 +41,36 @@ export const ProductCard = ({ id, image, title, price }) => {
                 alt={title}
               />
             )}
-          </Box>
-        </Link>
+          </Link>
+        </Box>
+        <Box
+          sx={{
+            Width: "150px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}>
+          <CardContent sx={{ padding: "8px", paddingLeft: "25px" }}>
+            <Typography>{title}</Typography>
+            <Typography>{` Precio: $${price},00 Us`}</Typography>
+          </CardContent>
+        </Box>
 
-        <CardContent sx={{ Width: "60px" }}>
-          <Typography variant="h6" color="text.primary">
-            {title}
-          </Typography>
-          <Typography variant="h7" color="text.primary">
-            {` Precio: $${price},00 Us`}
-          </Typography>
-        </CardContent>
-
-        <CardActions sx={{ display: "flex", flexDirection: "wrap" }}>
-          <IconButton
-            onClick={() => handleFavorites(id)}
-            aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <IconShoppingCartPlus
-            style={{ display: "flex", marginLeft: "130px" }}
-            onClick={handleAddToCart}
-          />
-        </CardActions>
+        <Box sx={{ display: "flex", flexDirection: "wrap", marginBottom: -3 }}>
+          <CardActions>
+            <IconButton
+              onClick={() => handleFavorites(id)}
+              aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+            <IconShoppingCartPlus
+              style={{ marginLeft: "130px" }}
+              onClick={handleAddToCart}
+            />
+          </CardActions>
+        </Box>
       </Card>
     </Box>
   );
