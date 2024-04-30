@@ -3,14 +3,17 @@ import { useFavorites } from "../common/hooks/useFavorites";
 import { useCartContext } from "../common/context/CartContext";
 
 // Componentesn de Material UI
-import { IconShoppingCartPlus } from "@tabler/icons-react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
+import { buttonStyles } from "../common/styles/buttonStyles";
+import { ShareButton } from "../common/components/ShareButton";
 
 export const ProductCard = ({ id, image, title, price }) => {
+  const styles = buttonStyles();
   const { addToCart } = useCartContext(id);
   const { handleFavorites } = useFavorites();
 
@@ -22,7 +25,7 @@ export const ProductCard = ({ id, image, title, price }) => {
     <Box sx={{ display: "flex", maxHeight: "355px" }}>
       <Card
         sx={{
-          width: "280px",
+          width: "250px",
           display: "flex",
           position: "relative",
           flexDirection: "column",
@@ -55,20 +58,21 @@ export const ProductCard = ({ id, image, title, price }) => {
           </CardContent>
         </Box>
 
-        <Box sx={{ display: "flex", flexDirection: "wrap", marginBottom: -3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            width: "250px",
+            flexDirection: "wrap",
+            marginBottom: -3,
+          }}>
           <CardActions>
             <IconButton
               onClick={() => handleFavorites(id)}
               aria-label="add to favorites">
               <FavoriteIcon />
             </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-            <IconShoppingCartPlus
-              style={{ marginLeft: "130px" }}
-              onClick={handleAddToCart}
-            />
+            <ShareButton id={id} />
+            <ShoppingCartIcon sx={styles.button} onClick={handleAddToCart} />
           </CardActions>
         </Box>
       </Card>

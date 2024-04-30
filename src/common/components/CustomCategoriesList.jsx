@@ -6,12 +6,13 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useState, useEffect } from "react";
 import { getAllCategory } from "../../common/services/categoriesService";
 import { Link } from "react-router-dom";
-// import getProductCategories from "../services/CategoriesServices";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export const CustomCategoriesList = () => {
   const theme = useTheme();
   const [categories, setCategories] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getAllCategory();
@@ -23,6 +24,9 @@ export const CustomCategoriesList = () => {
   return (
     <Box sx={{ position: "relative", width: "200px" }}>
       <Accordion
+        expanded={expanded}
+        onChange={() => setExpanded(true)}
+        onMouseLeave={() => setExpanded(false)}
         sx={{
           position: "absolute",
           zIndex: 99,

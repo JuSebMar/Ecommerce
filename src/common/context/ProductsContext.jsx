@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const ProductContext = createContext();
 
@@ -36,11 +37,17 @@ const ProductProvider = ({ children }) => {
   };
 
   const deleteProduct = async (id) => {
-    const data = await fetch(`https://fakestoreapi.com/products/${id}`, {
-      method: "DELETE",
-    });
-    const res = data.json();
-    return res;
+    try {
+      const data = await fetch(`https://fakestoreapi.com/products/${id}`, {
+        method: "DELETE",
+      });
+      toast.success("Producto eliminado");
+      const res = data.json();
+      return res;
+    } catch (error) {
+      console.error("Ocurrio un error:", error);
+      toast.error("el producto no se ha podido eliminar");
+    }
   };
 
   return (

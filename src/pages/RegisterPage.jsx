@@ -9,7 +9,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { GoogleSingIn } from "../auth/components/GoogleSingIn";
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
@@ -35,14 +36,14 @@ export const RegisterPage = () => {
     <Box
       sx={{
         display: "flex",
-        width: "100vw",
+        width: "100%",
         flexDirection: "column",
         gap: "8px",
-        margin: "200px 0 0 0",
+        margin: "100px 0 0 0",
         alignItems: "center",
-        height: "67vh",
+        height: "100%",
       }}>
-      <h2>Registro</h2>
+      <Typography>Sing In</Typography>
 
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <OutlinedInput
@@ -82,12 +83,13 @@ export const RegisterPage = () => {
         />
       </FormControl>
 
-      <div className="d-flex gap-2">
+      <Box className="d-flex gap-1">
         <button className="btn btn-primary mt-2" onClick={onLogin}>
-          Login
+          Log In
         </button>
         <Register newUser={newUser} email={email} password={password} />
-      </div>
+      </Box>
+      <GoogleSingIn />
     </Box>
   );
 };

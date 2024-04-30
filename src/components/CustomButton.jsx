@@ -3,7 +3,7 @@ export const CustomButton = ({ text, onClick }) => {
   return (
     <Button
       onClick={() => onClick()}
-      sx={{ width: "200px" }}
+      sx={{ width: "200px", maxHeight: "40px" }}
       variant="contained">
       {text}
     </Button>

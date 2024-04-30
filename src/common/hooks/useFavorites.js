@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState(null);
 
   const handleFavorites = (id) => {
+    toast.success("Add To Favorites");
     setFavorites(id);
     const updateFavorite = JSON.parse(localStorage.getItem("favorites")) || [];
 

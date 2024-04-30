@@ -17,9 +17,17 @@ import {
   Typography,
 } from "@mui/material";
 import { SmoothScroll } from "../../utils/SmoothScroll";
+import { useEffect, useState } from "react";
 
 export const Navbar = () => {
   const { user } = useAuth();
+  const [username, setUsername] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      setUsername(user.displayName || user.email);
+    }
+  }, [user]);
 
   return (
     <nav
@@ -54,7 +62,7 @@ export const Navbar = () => {
         <CustomCategoriesList />
         <SmoothScroll to="#contacto">
           <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
-            Contacto
+            Contact
           </Typography>
         </SmoothScroll>
       </Box>
@@ -77,64 +85,68 @@ export const Navbar = () => {
           <CustomizedBadges onChange={() => {}} />
         </NavLink>
         {user ? (
-          <Box sx={{ position: "relative", width: "180px" }}>
-            <Accordion
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon sx={{ color: "#ffffff" }} />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+              sx={{
+                backgroundColor: "#1B1C1A",
+                boxShadow: "none",
+                border: "none",
+              }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+                {user && <BadgeAvatars src={user.photoURL} />}
+                <Typography
+                  sx={{
+                    fontSize: 20,
+                    color: "#ffffff",
+                    minWidth: "max-content",
+                    overflowX: "hidden",
+                    wordBreak: "break-word",
+                  }}>
+                  {username && username}
+                </Typography>
+              </Box>
+            </AccordionSummary>
+            <AccordionDetails
               sx={{
                 position: "absolute",
-                zIndex: 99,
-                top: -35,
+                top: 80,
                 right: 0,
                 boxShadow: "none",
+                fontSize: 20,
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                backgroundColor: "#1B1C1A",
+                justifyContent: "center",
               }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon sx={{ color: "#ffffff" }} />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-                sx={{ backgroundColor: "#1B1C1A" }}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                  {user && <BadgeAvatars />}
-                  <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
-                    {user && user.displayName}
-                  </Typography>
-                </Box>
-              </AccordionSummary>
-              <AccordionDetails
-                sx={{
-                  fontSize: 20,
-                  textDecoration: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  backgroundColor: "#1B1C1A",
-                  justifyContent: "center",
-                }}>
-                {user && <LogOut />}
-              </AccordionDetails>
-            </Accordion>
-          </Box>
+              {user && <LogOut />}
+            </AccordionDetails>
+          </Accordion>
         ) : (
-          <Box sx={{ display: "flex", gap: "10px", marginRight: "15px" }}>
+          <>
             <NavLink
               className={({ isActive }) =>
                 `nav-item nav-link  ${isActive ? "active" : ""}`
               }
-              to="/newuser"
-              style={{ textDecoration: "none" }}>
+              to="/newuser">
               <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
-                Registro
+                Sing In
               </Typography>
             </NavLink>
             <NavLink
               className={({ isActive }) =>
                 `nav-item nav-link  ${isActive ? "active" : ""}`
               }
-              to="/login"
-              style={{ textDecoration: "none" }}>
+              to="/login">
               <Typography sx={{ fontSize: 20, color: "#ffffff" }}>
-                Login
+                Log In
               </Typography>
             </NavLink>
-          </Box>
+          </>
         )}
       </Box>
     </nav>
