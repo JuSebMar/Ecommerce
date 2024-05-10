@@ -2,7 +2,7 @@ import ShareIcon from "@mui/icons-material/Share";
 import { Box, IconButton } from "@mui/material";
 
 export const ShareButton = ({ id }) => {
-  const productUrl = `${window.location.origin}/product/${id}`;
+  const productUrl = `${window.location.origin}/cart/${id}`;
 
   const handleShare = () => {
     navigator.clipboard

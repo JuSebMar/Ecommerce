@@ -18,17 +18,19 @@ import {
 import { useProductContext } from "../common/context/ProductsContext";
 import { CustomButton } from "./CustomButton";
 import { useCartContext } from "../common/context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export const ListCart = () => {
   const [products, setProducts] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const { getOneProduct } = useProductContext();
   const { addToCart, deleteToCart, removeItem } = useCartContext();
+  const navigate = useNavigate();
 
   //para limpiar el lcoal storage
   const cleanCart = () => {
     removeLocalStorage("cart");
-    window.location.reload();
+    navigate("/", { replace: true });
   };
 
   const handlerAddToCart = (id) => {

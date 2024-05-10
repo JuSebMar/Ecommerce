@@ -6,7 +6,6 @@ import { useCartContext } from "../common/context/CartContext";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import { buttonStyles } from "../common/styles/buttonStyles";
