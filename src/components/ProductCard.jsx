@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useFavorites } from "../common/hooks/useFavorites";
 import { useCartContext } from "../common/context/CartContext";
-
 // Componentesn de Material UI
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
@@ -71,7 +70,10 @@ export const ProductCard = ({ id, image, title, price }) => {
               <FavoriteIcon />
             </IconButton>
             <ShareButton id={id} />
-            <ShoppingCartIcon sx={styles.button} onClick={handleAddToCart} />
+            <ShoppingCartIcon
+              sx={styles.button}
+              onClick={handleAddToCart}
+            />
           </CardActions>
         </Box>
       </Card>

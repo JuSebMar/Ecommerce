@@ -1,4 +1,3 @@
-import { Padding } from "@mui/icons-material";
 import { useTheme } from "@mui/material";
 
 export const buttonStyles = () => {
